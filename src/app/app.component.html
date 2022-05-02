@@ -1,10 +1,20 @@
 <mat-toolbar color="primary">
-  <span>MEAN Stack Training</span>
+  <span>
+    <a routerLink="/">
+    MEAN Stack Training
+  </a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li>
+      <a mat-button routerLink="/createpost" routerLinkActive="mat-basic">
+        Create Post
+      </a>
+    </li>
+  </ul>
+
 </mat-toolbar>
 <main>
-  <app-post-create>
-  </app-post-create>
-  <app-post-list>
-  </app-post-list>
+<router-outlet></router-outlet>
 </main>
 

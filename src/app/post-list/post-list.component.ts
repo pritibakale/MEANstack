@@ -20,6 +20,7 @@ export class PostListComponent implements OnInit, OnDestroy {
     console.log("inside list", this.Posts);
     this.postsSub =this.postService.getPostUpdateListner().subscribe((Posts:Post [])=>{
       this.Posts = Posts;
+      console.log("List of posts", this.Posts);
     });
   }
 

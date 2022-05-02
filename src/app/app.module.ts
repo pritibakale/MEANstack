@@ -14,6 +14,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 
 import{HttpClientModule} from "@angular/common/http";
+import {RoutingModule} from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import{HttpClientModule} from "@angular/common/http";
     MatExpansionModule,
     MatFormFieldModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

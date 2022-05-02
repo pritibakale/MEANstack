@@ -18,7 +18,7 @@ export class PostService {
       return postData.posts.map((post:any) =>{
         return {
           title: post.title,
-          content: post.cotent,
+          content: post.content,
           id: post._id
         }
       })
@@ -46,6 +46,9 @@ export class PostService {
   deletePost(postId: string | null){
     this.http.delete('http://localhost:3000/api/posts/'+postId)
     .subscribe(()=>{
+      const updatedPost = this.posts.filter(post=> post.id !=postId);
+      this.posts = updatedPost;
+      this.postsUpdated.next([...this.posts]);
       console.log('Deleted!');
     })
   }
