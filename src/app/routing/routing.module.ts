@@ -10,7 +10,7 @@ import { PostListComponent } from '../post-list/post-list.component';
 const routes: Routes = [
   { path:'', component: PostListComponent },
   { path:'createpost', component: PostCreateComponent },
-  { path:'editpost/:id', component: PostCreateComponent },
+  { path:'editpost/:postId', component: PostCreateComponent },
 ]
 
 @NgModule({

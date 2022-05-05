@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PostService {
-  private posts: Post[] =[];
+  private posts!: Post[];
   private postsUpdated = new Subject<Post[]>();
 
   getPosts(){
@@ -31,7 +31,7 @@ export class PostService {
   }
 
   addPostService(title: string, content: string){
-  const post: Post ={id:null, title: title, content: content};
+  const post: Post ={id:null!, title: title, content: content};
   console.log("*****************************",post);
   this.http.post<{message: string; postId: string}>('http://localhost:3000/api/posts',post)
   .subscribe((responseData)=>{
@@ -43,7 +43,7 @@ export class PostService {
   });
   }
 
-  deletePost(postId: string | null){
+  deletePost(postId: string | undefined){
     this.http.delete('http://localhost:3000/api/posts/'+postId)
     .subscribe(()=>{
       const updatedPost = this.posts.filter(post=> post.id !=postId);
@@ -52,6 +52,17 @@ export class PostService {
       console.log('Deleted!');
     })
   }
+
+updatePost(id:string, title:string, content:string){
+  const post: Post = {id: id, title:title, content:content};
+  this.http.put('http://localhost:3000/api/posts/'+id, post)
+  .subscribe(response => console.log(response));
+}
+
+getPost(id: string | undefined){
+  //this.posts.find(post => post.id ===id);
+  return this.posts.find(post => post.id ===id);
+}
  getPostUpdateListner()
  {
    return this.postsUpdated.asObservable();
